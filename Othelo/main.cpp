@@ -7,6 +7,9 @@ int main()
 {
 	int quit;
 
+    int test = 0;
+    cout << ~test << endl;
+    
     cout << "Hello world!" << endl;
 
 	cin>>quit;

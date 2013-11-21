@@ -5,15 +5,16 @@ class Joueur
 {
 	public:
 		virtual void jouer () = 0;
+    int couleur;
 
-}
+};
 
 class Humain: public Joueur
 {
 	public:
 		void jouer ();
 
-}
+};
 
 
 class Plateau
@@ -41,11 +42,10 @@ class Jeu
 		void quitter ();
 
 	private:
-
 		Joueur* joueur1;
 		Joueur* joueur2;
 
-}
+};
 
 
 #endif

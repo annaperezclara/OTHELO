@@ -30,6 +30,28 @@ void Plateau::afficher()
 
 bool Plateau::action_possible ( Humain joueur, int x, int y )
 {
-
+    // Pour chaque direction possible (Gauche, Bas, Droite, Haut, Droite/Haut, Droite/bas, Gauche/haut, etc)
+    for(int dx = -1; dx < 2; dx++) {
+        for(int dy = -1; dy < 2; dy++) {
+            // Si on est au bord du plateau
+            if(x + dx > 8 || y + dy > 8) {
+                break;
+            }
+            // Si le pion juste à côté est de la couleur adverse
+            if(liste_cases[x+dx+8*(y+dy)] == abs(joueur.couleur-1)) {
+                // On continue dans cette direction tant qu'on ne rencontre pas un bord ou un pion de la couleur du joueur
+                while(x + dx < 9 && y + dy < 9) {
+                    if(liste_cases[x+dx+8*(y+dy)] == joueur.couleur) {
+                        return true;
+                    }
+                    else {
+                        dy += dy;
+                        dx += dx;
+                    }
+                }
+            }
+        }
+    }
+    return false;
 }
 	
