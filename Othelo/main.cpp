@@ -4,6 +4,7 @@
 
 int main()
 {
+
 	Jeu monJeu;
 
 	//boucle de jeu

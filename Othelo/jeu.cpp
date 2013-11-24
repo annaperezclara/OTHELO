@@ -65,6 +65,8 @@ void Jeu::phase_jeu ()
 	int colonne = NULL;
 	Joueur* joueur = NULL;
 
+	plateau->afficher();
+
 	if( tour%2==0)
 		joueur = joueur1;
 	else
@@ -80,6 +82,7 @@ void Jeu::phase_jeu ()
 
 	plateau->ajouter_pion ( joueur, ligne, colonne);
 	tour++;
+
 }
 
 

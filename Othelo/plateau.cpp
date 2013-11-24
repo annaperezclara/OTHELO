@@ -6,13 +6,13 @@ Plateau::Plateau()
 {
 	for( int i=0; i<64; i++)
 	{
-		liste_cases[i] = NULL;
+		liste_cases[i] = -1;
 	}
 
 	liste_cases[27] = 0;
 	liste_cases[28] = 1;
-	liste_cases[35] = 0;
-	liste_cases[36] = 1;
+	liste_cases[35] = 1;
+	liste_cases[36] = 0;
 
 	int nb_pions_blancs = 2;
 	int nb_pions_noirs = 2;
@@ -21,12 +21,20 @@ Plateau::Plateau()
 
 void Plateau::afficher()
 {
+	cout<<endl;
+
 	for( int i =0; i<8; i++)
 	{ 
 		cout<<"|";
 		for( int j=0; j<8; j++)
 		{
-			cout<<liste_cases[i*8+j]<<"|";
+			if ( liste_cases[i*8+j]== 0)
+				cout<<"0"<<"|";
+			else if ( liste_cases[i*8+j]== 1)
+				cout<<"1"<<"|";
+			else if ( liste_cases[i*8+j]== -1)
+				cout<<"-"<<"|";
+			
 		}
 		cout<<endl;
 	}
@@ -35,7 +43,11 @@ void Plateau::afficher()
 
 bool Plateau::action_possible ( Joueur* joueur, int x, int y )
 {
+	int v = 0;
+
 	if( joueur == NULL || x == NULL || y == NULL)
+		return false;
+	else if ( liste_cases[x+8*y] != -1)
 		return false;
 	else
 	{
@@ -43,28 +55,33 @@ bool Plateau::action_possible ( Joueur* joueur, int x, int y )
 		for(int dx = -1; dx < 2; dx++) {
 			for(int dy = -1; dy < 2; dy++) {
 				// Si on est au bord du plateau
-				if(x + dx > 8 || y + dy > 8) {
+				if(x + dx >= 8 || y + dy >= 8 || (dx==0 && dy==0) ) {
 					continue;
 				}
 				// Si le pion juste à côté est de la couleur adverse
-				if(liste_cases[x+dx+8*(y+dy)] == abs(joueur->color-1)) {
+				if(liste_cases[x+dx+8*(y+dy)] == abs(joueur->color-1)) 
+				{
+					
 					// On continue dans cette direction tant qu'on ne rencontre pas un bord ou un pion de la couleur du joueur
-					while(x + dx < 9 && y + dy < 9) {
-						if(liste_cases[x+dx+8*(y+dy)] == joueur->color) {
+					v = 1;
+
+					while(x + v*dx < 8 && y + v*dy < 8) 
+					{
+						if(liste_cases[x+v*dx+8*(y+v*dy)] == joueur->color) 
+						{
 							return true;
 						}
-						else {
-							dy += dy;
-							dx += dx;
+						else 
+						{
+							v++;
 						}
 					}
+
 				}
 			}
 		}
 		return false;
 	}
-
-
 }
 	
 
@@ -76,7 +93,7 @@ bool Plateau::fin_de_jeu ( Joueur* joueur )
 	{
 		for( int j=0; j<8; j++)
 		{
-			if( liste_cases[i*8+j] == NULL )
+			if( liste_cases[i*8+j] == -1 )
 			{
 				if (action_possible ( joueur, i, j ))
 					fin = false;
