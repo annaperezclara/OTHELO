@@ -1,18 +1,26 @@
 #ifndef othelo
 #define othelo
 
+#include <iostream>
+#include <string>
+
+using namespace std;
+
 class Joueur
 {
 	public:
 		virtual void jouer () = 0;
-    int couleur;
+		int couleur;
 
 };
 
 class Humain: public Joueur
 {
 	public:
+		Humain(string nom, int couleur);
 		void jouer ();
+	private:
+		string name;
 
 };
 
@@ -38,13 +46,14 @@ class Jeu
 {
 	public:
 
-		void initialiser ();
+		Jeu ();
+		void phase_jeu ();
 		void quitter ();
 
 	private:
 		Joueur* joueur1;
 		Joueur* joueur2;
-
+		bool tour;
 };
 
 

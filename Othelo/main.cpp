@@ -1,18 +1,14 @@
-#include <iostream>
 #include "Othelo.h"
 
-using namespace std;
+
 
 int main()
 {
-	int quit;
+	Jeu monJeu;
 
-    int test = 0;
-    cout << ~test << endl;
-    
-    cout << "Hello world!" << endl;
 
-	cin>>quit;
+	int tortue;
+	cin>>tortue;
 
     return 0;
 }
