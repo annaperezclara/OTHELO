@@ -10,7 +10,7 @@ class Joueur
 {
 	public:
 		virtual void jouer () = 0;
-		int couleur;
+		int color;
 
 };
 
@@ -31,8 +31,9 @@ class Plateau
 	
 	Plateau ();
 	void afficher ();
-	bool action_possible ( Humain joueur, int x, int y );
-	void ajouter_pion ( Humain joueur, int x, int y);
+	bool action_possible ( Joueur* joueur, int x, int y );
+	void ajouter_pion ( Joueur* joueur, int x, int y);
+	bool fin_de_jeu ( Joueur* joueur );
     
     private:
  
@@ -47,13 +48,18 @@ class Jeu
 	public:
 
 		Jeu ();
+		~Jeu ();
 		void phase_jeu ();
 		void quitter ();
+		Joueur* joueur_actuel();
+		Plateau* plateau;
 
 	private:
 		Joueur* joueur1;
 		Joueur* joueur2;
-		bool tour;
+		int tour;
+		
+		
 };
 
 

@@ -3,7 +3,7 @@
 Humain::Humain( string nom, int couleur) 
 {
 	name = nom;
-	couleur = couleur;
+	color = couleur;
 }
 
 void Humain::jouer()

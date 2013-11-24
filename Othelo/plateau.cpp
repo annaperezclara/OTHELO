@@ -8,8 +8,14 @@ Plateau::Plateau()
 	{
 		liste_cases[i] = NULL;
 	}
-	int nb_pions_blancs = 0;
-	int nb_pions_noirs = 0;
+
+	liste_cases[27] = 0;
+	liste_cases[28] = 1;
+	liste_cases[35] = 0;
+	liste_cases[36] = 1;
+
+	int nb_pions_blancs = 2;
+	int nb_pions_noirs = 2;
 
 }
 
@@ -27,30 +33,66 @@ void Plateau::afficher()
 			
 }
 
-bool Plateau::action_possible ( Humain joueur, int x, int y )
+bool Plateau::action_possible ( Joueur* joueur, int x, int y )
 {
-    // Pour chaque direction possible (Gauche, Bas, Droite, Haut, Droite/Haut, Droite/bas, Gauche/haut, etc)
-    for(int dx = -1; dx < 2; dx++) {
-        for(int dy = -1; dy < 2; dy++) {
-            // Si on est au bord du plateau
-            if(x + dx > 8 || y + dy > 8) {
-                continue;
-            }
-            // Si le pion juste à côté est de la couleur adverse
-            if(liste_cases[x+dx+8*(y+dy)] == abs(joueur.couleur-1)) {
-                // On continue dans cette direction tant qu'on ne rencontre pas un bord ou un pion de la couleur du joueur
-                while(x + dx < 9 && y + dy < 9) {
-                    if(liste_cases[x+dx+8*(y+dy)] == joueur.couleur) {
-                        return true;
-                    }
-                    else {
-                        dy += dy;
-                        dx += dx;
-                    }
-                }
-            }
-        }
-    }
-    return false;
+	if( joueur == NULL || x == NULL || y == NULL)
+		return false;
+	else
+	{
+		// Pour chaque direction possible (Gauche, Bas, Droite, Haut, Droite/Haut, Droite/bas, Gauche/haut, etc)
+		for(int dx = -1; dx < 2; dx++) {
+			for(int dy = -1; dy < 2; dy++) {
+				// Si on est au bord du plateau
+				if(x + dx > 8 || y + dy > 8) {
+					continue;
+				}
+				// Si le pion juste à côté est de la couleur adverse
+				if(liste_cases[x+dx+8*(y+dy)] == abs(joueur->color-1)) {
+					// On continue dans cette direction tant qu'on ne rencontre pas un bord ou un pion de la couleur du joueur
+					while(x + dx < 9 && y + dy < 9) {
+						if(liste_cases[x+dx+8*(y+dy)] == joueur->color) {
+							return true;
+						}
+						else {
+							dy += dy;
+							dx += dx;
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+
+
 }
 	
+
+bool Plateau::fin_de_jeu ( Joueur* joueur )
+{
+	bool fin = true;
+
+	for( int i=0; i<8; i++)
+	{
+		for( int j=0; j<8; j++)
+		{
+			if( liste_cases[i*8+j] == NULL )
+			{
+				if (action_possible ( joueur, i, j ))
+					fin = false;
+			}
+		}
+	}
+
+	return fin;
+
+}
+
+void Plateau::ajouter_pion ( Joueur* joueur, int x, int y)
+{
+	if ( joueur->color == 1)
+		liste_cases[x*8+y]=1;
+	else if ( joueur->color == 0)
+		liste_cases[x*8+y]=0;
+
+}
