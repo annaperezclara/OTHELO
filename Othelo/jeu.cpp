@@ -1,7 +1,5 @@
 #include "Othelo.h"
 
-
-
 Jeu::Jeu( )
 {
 	int jeu = NULL;
@@ -61,8 +59,8 @@ Joueur* Jeu::joueur_actuel()
 
 void Jeu::phase_jeu ()
 {
-	int ligne = NULL;
-	int colonne = NULL;
+	int ligne = -1;
+	int colonne = -1;
 	Joueur* joueur = NULL;
 
 	plateau->afficher();
@@ -72,7 +70,7 @@ void Jeu::phase_jeu ()
 	else
 		joueur = joueur2;
 
-	while( !plateau->action_possible ( joueur, ligne, colonne ) )
+	while( !plateau->action_possible ( joueur, colonne-1, ligne-1 ) )
 	{
 		cout<<"Veuillez indiquer un numero de ligne"<<endl;
 		cin>>ligne;
@@ -80,11 +78,10 @@ void Jeu::phase_jeu ()
 		cin>>colonne;
 	}
 
-	plateau->ajouter_pion ( joueur, ligne, colonne);
+	plateau->ajouter_pion ( joueur, colonne-1, ligne-1);
 	tour++;
 
 }
-
 
 void Jeu::quitter ()
 {
