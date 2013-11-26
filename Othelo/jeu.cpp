@@ -54,7 +54,7 @@ Joueur* Jeu::joueur_actuel()
 
 	if ( tour%2 == 0)
 		return joueur1;
-	else if ( tour%2 == 1)
+	else
 		return joueur2;
 }
 
