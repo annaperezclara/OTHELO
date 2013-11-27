@@ -43,9 +43,6 @@ void Plateau::afficher()
 bool Plateau::action_possible ( Joueur* joueur, int x, int y )
 {
     
-    int test2 = x+8*y;
-    int test = liste_cases[x+8*y];
-
 	int v = 0;
     
 	if( joueur == NULL || x == -1 || y == -1)
