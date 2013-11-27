@@ -90,6 +90,7 @@ bool Plateau::action_possible ( Joueur* joueur, int x, int y )
 
 bool Plateau::fin_de_jeu ( Joueur* joueur )
 {
+
     return false;
     
 	bool fin = true;
@@ -128,7 +129,7 @@ void Plateau::ajouter_pion ( Joueur* joueur, int x, int y)
                 // On continue dans cette direction tant qu'on ne rencontre pas un bord ou un pion de la couleur du joueur
                 int v = 1;
                 
-                while(x + v*dx < 8 && y + v*dy < 8)
+                while(x+v*dx >= 0 && x + v*dx < 8 && y + v*dy < 8 && y+v*dy >= 0)
                 {
                     // Quand on rencontre une case du joueur, on fait marche arrière en convertissant tous les pions sur notre passage
                     if(liste_cases[x+v*dx+8*(y+v*dy)] == joueur->color)

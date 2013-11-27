@@ -10,9 +10,9 @@ void Humain::jouer(int *coords)
 {
     int nLigne, nColonne;
     
-    cout<<"Veuillez indiquer un numero de ligne"<<endl;
+    cout<<"("<< color << ") Veuillez indiquer un numero de ligne : ";
     cin>>nLigne;
-    cout<<"Veuillez indiquer un numero de colonne"<<endl;
+    cout<<"(" << color << ") Veuillez indiquer un numero de colonne : ";
     cin>>nColonne;
     
     coords[0] = nColonne-1;

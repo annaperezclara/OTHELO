@@ -24,29 +24,24 @@ class Humain: public Joueur
 
 };
 
-
 class Plateau
 {
     public:
-	
-	Plateau ();
-	void afficher ();
-	bool action_possible ( Joueur* joueur, int x, int y );
-	void ajouter_pion ( Joueur* joueur, int x, int y);
-	bool fin_de_jeu ( Joueur* joueur );
+        Plateau ();
+        void afficher ();
+        bool action_possible ( Joueur* joueur, int x, int y );
+        void ajouter_pion ( Joueur* joueur, int x, int y);
+        bool fin_de_jeu ( Joueur* joueur );
     
     private:
- 
-    int liste_cases [64];
-	int nb_pions_blancs;
-	int nb_pions_noirs;
-
+        int liste_cases [64];
+        int nb_pions_blancs;
+        int nb_pions_noirs;
 };
 
 class Jeu
 {
 	public:
-
 		Jeu ();
 		~Jeu ();
 		void phase_jeu ();
@@ -58,8 +53,6 @@ class Jeu
 		Joueur* joueur1;
 		Joueur* joueur2;
 		int tour;
-		
-		
 };
 
 
