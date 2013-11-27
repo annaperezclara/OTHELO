@@ -69,7 +69,7 @@ bool Plateau::action_possible ( Joueur* joueur, int x, int y )
 					// On continue dans cette direction tant qu'on ne rencontre pas un bord ou un pion de la couleur du joueur
 					v = 1;
 
-					while(x + v*dx < 8 && y + v*dy < 8) 
+                    while(x+v*dx >= 0 && x + v*dx < 8 && y + v*dy < 8 && y+v*dy >= 0)
 					{
 						if(liste_cases[x+v*dx+8*(y+v*dy)] == joueur->color) 
 						{
