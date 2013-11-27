@@ -20,11 +20,16 @@ Plateau::Plateau()
 
 void Plateau::afficher()
 {
+	cout<<" ";
+
+	for( int i =0; i<8; i++)
+		cout<<" "<<i;
+
 	cout<<endl;
 
 	for( int i =0; i<8; i++)
 	{ 
-		cout<<"|";
+		cout<<i<<"|";
 		for( int j=0; j<8; j++)
 		{
 			if ( liste_cases[i*8+j]== 0)
@@ -42,7 +47,7 @@ void Plateau::afficher()
 
 bool Plateau::action_possible ( Joueur* joueur, int x, int y )
 {
-    
+
 	int v = 0;
     
 	if( joueur == NULL || x == -1 || y == -1)
