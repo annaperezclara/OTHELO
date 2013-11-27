@@ -45,11 +45,8 @@ Jeu::~Jeu( )
 
 }
 
-
-
 Joueur* Jeu::joueur_actuel()
 {
-
 	if ( tour%2 == 0)
 		return joueur1;
 	else
@@ -59,28 +56,16 @@ Joueur* Jeu::joueur_actuel()
 
 void Jeu::phase_jeu ()
 {
-	int ligne = -1;
-	int colonne = -1;
-	Joueur* joueur = NULL;
-
+	Joueur* joueur = joueur_actuel();
+    
 	plateau->afficher();
 
-	if( tour%2==0)
-		joueur = joueur1;
-	else
-		joueur = joueur2;
+    int coords[2] = {-1,-1};
+	while( !plateau->action_possible(joueur, coords[0], coords[1]))
+        joueur->jouer(coords);
 
-	while( !plateau->action_possible ( joueur, colonne-1, ligne-1 ) )
-	{
-		cout<<"Veuillez indiquer un numero de ligne"<<endl;
-		cin>>ligne;
-		cout<<"Veuillez indiquer un numero de colonne"<<endl;
-		cin>>colonne;
-	}
-
-	plateau->ajouter_pion ( joueur, colonne-1, ligne-1);
+	plateau->ajouter_pion(joueur, coords[0], coords[1]);
 	tour++;
-
 }
 
 void Jeu::quitter ()

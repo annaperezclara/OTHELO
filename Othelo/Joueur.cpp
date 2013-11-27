@@ -6,10 +6,15 @@ Humain::Humain( string nom, int couleur)
 	color = couleur;
 }
 
-void Humain::jouer()
+void Humain::jouer(int *coords)
 {
-    int case_index;
-    cout<<"Dans quelle case jouer ?"<<endl;
-    cin>>case_index;
+    int nLigne, nColonne;
     
+    cout<<"Veuillez indiquer un numero de ligne"<<endl;
+    cin>>nLigne;
+    cout<<"Veuillez indiquer un numero de colonne"<<endl;
+    cin>>nColonne;
+    
+    coords[0] = nColonne-1;
+    coords[1] = nLigne-1;
 }

@@ -9,7 +9,7 @@ using namespace std;
 class Joueur
 {
 	public:
-		virtual void jouer () = 0;
+		virtual void jouer (int *coords) = 0;
 		int color;
 
 };
@@ -18,7 +18,7 @@ class Humain: public Joueur
 {
 	public:
 		Humain(string nom, int couleur);
-		void jouer ();
+		void jouer (int *coords);
 	private:
 		string name;
 
