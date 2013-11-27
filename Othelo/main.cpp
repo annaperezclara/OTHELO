@@ -1,19 +1,14 @@
 #include "Othelo.h"
 
-
-
 int main()
 {
-
 	Jeu monJeu;
 
 	//boucle de jeu
-	while( !monJeu.plateau->fin_de_jeu( monJeu.joueur_actuel() ) )
-	{
-		monJeu.phase_jeu ();
-	}
+	while(!monJeu.plateau->fin_de_jeu( monJeu.joueur_actuel()))
+		monJeu.phase_jeu();
 
-	monJeu.quitter ();
+	monJeu.quitter();
 
 	delete &monJeu;
 	

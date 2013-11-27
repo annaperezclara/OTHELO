@@ -10,7 +10,7 @@ class Joueur
 {
 	public:
 		virtual void jouer (int *coords) = 0;
-		int color;
+		int couleur;
 
 };
 
@@ -20,7 +20,7 @@ class Humain: public Joueur
 		Humain(string nom, int couleur);
 		void jouer (int *coords);
 	private:
-		string name;
+		string nom;
 
 };
 

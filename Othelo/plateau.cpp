@@ -1,7 +1,6 @@
 #include "Othelo.h"
 
 
-
 Plateau::Plateau()
 {
 	for( int i=0; i<64; i++)
@@ -38,7 +37,7 @@ void Plateau::afficher()
 		}
 		cout<<endl;
 	}
-			
+    cout<<endl;
 }
 
 bool Plateau::action_possible ( Joueur* joueur, int x, int y )
@@ -63,7 +62,7 @@ bool Plateau::action_possible ( Joueur* joueur, int x, int y )
 					continue;
 				}
 				// Si le pion juste à côté est de la couleur adverse
-				if(liste_cases[x+dx+8*(y+dy)] == abs(joueur->color-1)) 
+				if(liste_cases[x+dx+8*(y+dy)] == abs(joueur->couleur-1))
 				{
 					
 					// On continue dans cette direction tant qu'on ne rencontre pas un bord ou un pion de la couleur du joueur
@@ -71,7 +70,7 @@ bool Plateau::action_possible ( Joueur* joueur, int x, int y )
 
                     while(x+v*dx >= 0 && x + v*dx < 8 && y + v*dy < 8 && y+v*dy >= 0)
 					{
-						if(liste_cases[x+v*dx+8*(y+v*dy)] == joueur->color) 
+						if(liste_cases[x+v*dx+8*(y+v*dy)] == joueur->couleur)
 						{
 							return true;
 						}
@@ -113,7 +112,7 @@ bool Plateau::fin_de_jeu ( Joueur* joueur )
 
 void Plateau::ajouter_pion ( Joueur* joueur, int x, int y)
 {
-    liste_cases[x+8*y]= joueur->color;
+    liste_cases[x+8*y]= joueur->couleur;
     
     for(int dx = -1; dx < 2; dx++) {
         
@@ -123,7 +122,7 @@ void Plateau::ajouter_pion ( Joueur* joueur, int x, int y)
                 continue;
             }
             // Si le pion juste à côté est de la couleur adverse
-            if(liste_cases[x+dx+8*(y+dy)] == abs(joueur->color-1))
+            if(liste_cases[x+dx+8*(y+dy)] == abs(joueur->couleur-1))
             {
                 
                 // On continue dans cette direction tant qu'on ne rencontre pas un bord ou un pion de la couleur du joueur
@@ -132,10 +131,10 @@ void Plateau::ajouter_pion ( Joueur* joueur, int x, int y)
                 while(x+v*dx >= 0 && x + v*dx < 8 && y + v*dy < 8 && y+v*dy >= 0)
                 {
                     // Quand on rencontre une case du joueur, on fait marche arrière en convertissant tous les pions sur notre passage
-                    if(liste_cases[x+v*dx+8*(y+v*dy)] == joueur->color)
+                    if(liste_cases[x+v*dx+8*(y+v*dy)] == joueur->couleur)
                     {
                         while(v != 0) {
-                            liste_cases[x+v*dx+8*(y+v*dy)] = joueur->color;
+                            liste_cases[x+v*dx+8*(y+v*dy)] = joueur->couleur;
                             v--;
                         }
                         break;
