@@ -23,13 +23,13 @@ void Plateau::afficher()
 	cout<<" ";
 
 	for( int i =0; i<8; i++)
-		cout<<" "<<i;
+		cout<<" "<<i+1;
 
 	cout<<endl;
 
 	for( int i =0; i<8; i++)
 	{ 
-		cout<<i<<"|";
+		cout<<i+1<<"|";
 		for( int j=0; j<8; j++)
 		{
 			if ( liste_cases[i*8+j]== 0)
