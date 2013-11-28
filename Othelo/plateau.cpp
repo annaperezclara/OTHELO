@@ -18,7 +18,7 @@ Plateau::Plateau()
 
 }
 
-void Plateau::afficher()
+void Plateau::afficher(sf::RenderWindow *fenetre)
 {
 	cout<<" ";
 
@@ -43,6 +43,42 @@ void Plateau::afficher()
 		cout<<endl;
 	}
     cout<<endl;
+
+
+	fenetre->clear();
+	sf::CircleShape shape(10.f);
+
+	for( int i =0; i<8; i++)
+	{ 
+		cout<<i+1<<"|";
+		for( int j=0; j<8; j++)
+		{
+			if ( liste_cases[i*8+j]== 0)
+			{
+				shape.setFillColor(sf::Color::Red);
+				shape.setPosition((float)j*100+50,(float)i*100+50);
+				fenetre->draw(shape);
+			}
+			else if ( liste_cases[i*8+j]== 1)
+			{
+				shape.setFillColor(sf::Color::Green);
+				shape.setPosition((float)j*100+50,(float)i*100+50);
+				fenetre->draw(shape);
+			}
+			else if ( liste_cases[i*8+j]== -1)
+			{
+				shape.setFillColor(sf::Color::White);
+				shape.setPosition((float)j*100+50,(float)i*100+50);
+				fenetre->draw(shape);
+			}
+		}
+		cout<<endl;
+	}
+
+
+    fenetre->display();
+
+
 }
 
 bool Plateau::action_possible ( Joueur* joueur, int x, int y )
@@ -92,8 +128,7 @@ bool Plateau::action_possible ( Joueur* joueur, int x, int y )
 bool Plateau::fin_de_jeu ( Joueur* joueur )
 {
 
-    return false;
-    
+    //on parcourt toutes les cases pour verifier qu'une action est possible
 	bool fin = true;
 
 	for( int i=0; i<8; i++)

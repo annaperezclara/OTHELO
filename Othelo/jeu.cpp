@@ -53,20 +53,44 @@ Joueur* Jeu::joueur_actuel()
 		return joueur2;
 }
 
+void Jeu::phase_jeu (sf::RenderWindow *fenetre)
+{
+	Joueur* joueur = joueur_actuel();
+    
+	plateau->afficher(fenetre);
 
+	//on initialise avec une position impossible
+    int coords[2] = {-1,-1};
+
+	//on demande au joueur des coordonnees jusqu'a ce qu'il fournisse une position possible
+	while( !plateau->action_possible(joueur, coords[0], coords[1]))
+        joueur->jouer(coords);
+
+	//on effectue l'action et on passe au tour suivant
+	plateau->ajouter_pion(joueur, coords[0], coords[1]);
+	tour++;
+}
+
+/*
 void Jeu::phase_jeu ()
 {
 	Joueur* joueur = joueur_actuel();
     
 	plateau->afficher();
 
+	//on initialise avec une position impossible
     int coords[2] = {-1,-1};
+
+	//on demande au joueur des coordonnees jusqu'a ce qu'il fournisse une position possible
 	while( !plateau->action_possible(joueur, coords[0], coords[1]))
         joueur->jouer(coords);
 
+	//on effectue l'action et on passe au tour suivant
 	plateau->ajouter_pion(joueur, coords[0], coords[1]);
 	tour++;
 }
+*/
+
 
 void Jeu::quitter ()
 {
