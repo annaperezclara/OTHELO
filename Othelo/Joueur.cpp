@@ -8,13 +8,13 @@ Humain::Humain( string nom, int couleur)
 
 void Humain::jouer(int *coords)
 {
-    int nLigne, nColonne;
+    int ligne, colonne;
     
     cout<<"("<< couleur << ") Veuillez indiquer un numero de ligne : ";
-    cin>>nLigne;
+    cin>>ligne;
     cout<<"(" << couleur << ") Veuillez indiquer un numero de colonne : ";
-    cin>>nColonne;
+    cin>>colonne;
     
-    coords[0] = nColonne-1;
-    coords[1] = nLigne-1;
+    coords[0] = colonne-1;
+    coords[1] = ligne-1;
 }
