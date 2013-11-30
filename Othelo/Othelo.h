@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
+#include "Plateau.h"
 
 using namespace std;
 
@@ -24,19 +27,10 @@ class Humain: public Joueur
 
 };
 
-class Plateau
+class Strategie
 {
     public:
-        Plateau ();
-        void afficher ();
-        bool action_possible ( Joueur* joueur, int x, int y );
-        void ajouter_pion ( Joueur* joueur, int x, int y);
-        bool fin_de_jeu ( Joueur* joueur );
-    
-    private:
-        int liste_cases [64];
-        int nb_pions_blancs;
-        int nb_pions_noirs;
+        virtual void coords(int* coords, Plateau* plateau, Joueur* joueur) = 0;
 };
 
 class Jeu
@@ -44,7 +38,7 @@ class Jeu
 	public:
 		Jeu ();
 		~Jeu ();
-		void phase_jeu ();
+		void phase_jeu (sf::RenderWindow *fenetre);
 		void quitter ();
 		Joueur* joueur_actuel();
 		Plateau* plateau;

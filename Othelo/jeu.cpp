@@ -1,4 +1,8 @@
 #include "Othelo.h"
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
+#include "StrategieStupide.h"
+#include "IA.h"
 
 Jeu::Jeu( )
 {
@@ -14,6 +18,10 @@ Jeu::Jeu( )
 		cin>>jeu;
 	}
 
+    tour = 0;
+    
+	plateau = new Plateau();
+
 	if( jeu == 2 )
 	{
 		cout<<"Nom du joueur 1"<<endl;
@@ -27,12 +35,13 @@ Jeu::Jeu( )
 	}
 	else if(jeu == 1)
 	{
+        cout<<"Nom du joueur 1"<<endl;
+        cin>>nom;
+        joueur1 = new Humain(nom,1);
+        
+        joueur2 = new IA(new StrategieStupide(), plateau);
 		cout<<"Pardon le jeu contre ordinateur n'est pas encore implemente"<<endl;
 	}
-
-	tour = 0;
-
-	plateau = new Plateau();
 
 
 }
