@@ -4,21 +4,21 @@
 
 int main()
 {
-	Jeu monJeu;
-
 	
 	sf::RenderWindow window(sf::VideoMode(400, 400), "Jeu d'othelo");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
+    Jeu monJeu(&window);
+    
 	//boucle de jeu tant que la fenêtre reste ouverte
     while (window.isOpen())
     {
+        monJeu.phase_jeu(&window);
+
         sf::Event event;
         while (window.pollEvent(event))
         {
-			monJeu.phase_jeu(&window);
-
 			if(monJeu.plateau->fin_de_jeu( monJeu.joueur_actuel()))
 			{
 				//si plus de position possible on quitte et on affiche le vainqueyr
@@ -31,7 +31,7 @@ int main()
                 window.close();
         }
 
-		cout<<"gros bouffon"<<endl;
+		//cout<<"gros bouffon"<<endl;
 
 		/*
         window.clear();

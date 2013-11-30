@@ -98,7 +98,7 @@ bool Plateau::action_possible ( Joueur* joueur, int x, int y )
 
 	int v = 0;
     
-	if( joueur == NULL || x == -1 || y == -1)
+	if( joueur == NULL || x < 0 || x > 7 || y < 0 || y > 7)
 		return false;
 	else if ( liste_cases[x+8*y] != -1)
 		return false;

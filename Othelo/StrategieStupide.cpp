@@ -20,7 +20,7 @@ void StrategieStupide::coords(int* coords, Plateau* plateau, Joueur* joueur) {
         }
     }
 
-    sleep(2);
+    sleep(1.5);
     
     coords[0] = x;
     coords[1] = y;

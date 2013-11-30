@@ -4,7 +4,8 @@
 //
 
 #include "IA.h"
-IA::IA(Strategie* strategie, Plateau* plateau) {
+IA::IA(Jeu* jeu, Strategie* strategie, Plateau* plateau) {
+    this->jeu = jeu;
     this->strategie = strategie;
     this->plateau = plateau;
 }

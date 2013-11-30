@@ -12,7 +12,7 @@
 class IA: public Joueur
 {
 public:
-    IA(Strategie* strategie, Plateau* plateau);
+    IA(Jeu* jeu, Strategie* strategie, Plateau* plateau);
     void jouer(int *coords);
 private:
     Strategie* strategie;

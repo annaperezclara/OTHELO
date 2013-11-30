@@ -4,8 +4,11 @@
 #include "StrategieStupide.h"
 #include "IA.h"
 
-Jeu::Jeu( )
+Jeu::Jeu(sf::RenderWindow* fenetre)
 {
+    
+    this->fenetre = fenetre;
+    
 	int jeu = NULL;
 	string nom;
 
@@ -26,20 +29,20 @@ Jeu::Jeu( )
 	{
 		cout<<"Nom du joueur 1"<<endl;
 		cin>>nom;
-		joueur1 = new Humain(nom, 1);
+		joueur1 = new Humain(this, nom, 1);
 
 		cout<<"Nom du joueur 2"<<endl;
 		cin>>nom;
-		joueur2 = new Humain(nom, 0);
+		joueur2 = new Humain(this, nom, 0);
 
 	}
 	else if(jeu == 1)
 	{
         cout<<"Nom du joueur 1"<<endl;
         cin>>nom;
-        joueur1 = new Humain(nom,1);
+        joueur1 = new Humain(this, nom, 1);
         
-        joueur2 = new IA(new StrategieStupide(), plateau);
+        joueur2 = new IA(this, new StrategieStupide(), plateau);
 	}
 
 
@@ -61,7 +64,7 @@ Joueur* Jeu::joueur_actuel()
 		return joueur2;
 }
 
-void Jeu::phase_jeu (sf::RenderWindow *fenetre)
+void Jeu::phase_jeu (sf::RenderWindow *fenetre2)
 {
 	Joueur* joueur = joueur_actuel();
     
