@@ -40,7 +40,6 @@ Jeu::Jeu( )
         joueur1 = new Humain(nom,1);
         
         joueur2 = new IA(new StrategieStupide(), plateau);
-		cout<<"Pardon le jeu contre ordinateur n'est pas encore implemente"<<endl;
 	}
 
 

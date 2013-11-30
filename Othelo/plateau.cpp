@@ -44,10 +44,30 @@ void Plateau::afficher(sf::RenderWindow *fenetre)
 		cout<<endl;
 	}
     cout<<endl;
+    
+    float radius = 20.0f;
+    float padding = 5.0f;
+    float width = 8*2*(radius+padding);
+	
+    fenetre->setSize(sf::Vector2u(width, width));
+    fenetre->clear(sf::Color(12, 138, 89));
+    
+    sf::RectangleShape line(sf::Vector2f(width, 2));
+    line.setFillColor(sf::Color::Black);
+    
+    for (int i = 1; i < 8; i++) {
+        line.setPosition(0, 2*(radius+padding)*i);
+        fenetre->draw(line);
+    }
 
-
-	fenetre->clear();
-	sf::CircleShape shape(10.f);
+    line.setSize(sf::Vector2f(2, width));
+    
+    for (int i = 1; i < 8; i++) {
+        line.setPosition(2*(radius+padding)*i, 0);
+        fenetre->draw(line);
+    }
+    
+	sf::CircleShape circle(radius);
 
 	for( int i =0; i<8; i++)
 	{ 
@@ -55,23 +75,14 @@ void Plateau::afficher(sf::RenderWindow *fenetre)
 		for( int j=0; j<8; j++)
 		{
 			if ( liste_cases[i*8+j]== 0)
-			{
-				shape.setFillColor(sf::Color::Red);
-				shape.setPosition((float)j*100+50,(float)i*100+50);
-				fenetre->draw(shape);
-			}
+				circle.setFillColor(sf::Color::Black);
 			else if ( liste_cases[i*8+j]== 1)
-			{
-				shape.setFillColor(sf::Color::Green);
-				shape.setPosition((float)j*100+50,(float)i*100+50);
-				fenetre->draw(shape);
-			}
-			else if ( liste_cases[i*8+j]== -1)
-			{
-				shape.setFillColor(sf::Color::White);
-				shape.setPosition((float)j*100+50,(float)i*100+50);
-				fenetre->draw(shape);
-			}
+				circle.setFillColor(sf::Color::White);
+            else if ( liste_cases[i*8+j]== -1)
+                continue;
+            
+            circle.setPosition((float)padding+j*2*(radius+padding),(float)padding+i*2*(radius+padding));
+            fenetre->draw(circle);
 		}
 		cout<<endl;
 	}

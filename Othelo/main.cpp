@@ -7,7 +7,7 @@ int main()
 	Jeu monJeu;
 
 	
-	sf::RenderWindow window(sf::VideoMode(800, 800), "Jeu d'othelo");
+	sf::RenderWindow window(sf::VideoMode(400, 400), "Jeu d'othelo");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
