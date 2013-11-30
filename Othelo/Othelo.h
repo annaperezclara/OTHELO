@@ -24,7 +24,6 @@ class Humain: public Joueur
 	public:
 		Humain(Jeu* jeu, string nom, int couleur);
 		void jouer (int *coords);
-	private:
 		string nom;
 
 };
@@ -47,8 +46,9 @@ class Jeu
         sf::RenderWindow* fenetre;
 
 	private:
-		Joueur* joueur1;
-		Joueur* joueur2;
+		Humain* joueur1;
+		Humain* joueur2;
+
 		int tour;
 };
 

@@ -4,8 +4,8 @@
 
 int main()
 {
-	
-	sf::RenderWindow window(sf::VideoMode(400, 400), "Jeu d'othelo");
+	//fenetre non resizable sinon bug d'affichage
+	sf::RenderWindow window(sf::VideoMode(400, 430), "Jeu d'othelo", sf::Style::Titlebar);
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
@@ -23,7 +23,10 @@ int main()
 			{
 				//si plus de position possible on quitte et on affiche le vainqueyr
 				// /!\/!\ fonction a rajouter pour dire qui a gagne
+				
+				//monJeu.quitter();
 
+				delete &monJeu;
 				window.close();
 			}
 
@@ -31,26 +34,8 @@ int main()
                 window.close();
         }
 
-		//cout<<"gros bouffon"<<endl;
-
-		/*
-        window.clear();
-        window.draw(shape);
-        window.display();*/
 	}
     
-
-	
-	/*
-	//boucle de jeu
-	while(!monJeu.plateau->fin_de_jeu( monJeu.joueur_actuel()))
-		monJeu.phase_jeu();
-
-	monJeu.quitter();
-
-	delete &monJeu;
-	*/
-	
 
 	
     return 0;
