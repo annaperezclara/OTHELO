@@ -6,7 +6,7 @@
 
 Jeu::Jeu(sf::RenderWindow* fenetre)
 {
-    
+    bool termine = false;
     this->fenetre = fenetre;
     
 	int jeu = NULL;

@@ -43,7 +43,7 @@ class Jeu
 		Joueur* joueur_actuel();
 		Plateau* plateau;
         sf::RenderWindow* fenetre;
-        bool termine = false;
+        bool termine;
 
 	private:
 		Joueur* joueur1;
