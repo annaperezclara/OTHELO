@@ -4,7 +4,7 @@
 
 Plateau::Plateau()
 {
-	for( int i=0; i<64; i++)
+	/*for( int i=0; i<64; i++)
 	{
 		liste_cases[i] = -1;
 	}
@@ -12,7 +12,16 @@ Plateau::Plateau()
 	liste_cases[27] = 0;
 	liste_cases[28] = 1;
 	liste_cases[35] = 1;
-	liste_cases[36] = 0;
+	liste_cases[36] = 0;*/
+	for( int i=0; i<64; i++)
+	{
+		liste_cases[i] = 1;
+	}
+
+	liste_cases[27] = -1;
+	liste_cases[28] = 0;
+	liste_cases[35] = -1;
+	liste_cases[36] = -1;
 
 	int nb_pions_blancs = 2;
 	int nb_pions_noirs = 2;
@@ -32,6 +41,16 @@ void Plateau::calcul_score()
 			nb_pions_noirs++;
 	}
 }
+
+
+bool Plateau::calcul_vainqueur()
+{
+	if( nb_pions_blancs>nb_pions_noirs)
+		return true;
+	else
+		return false;
+}
+
 
 void Plateau::afficher(sf::RenderWindow *fenetre, std::string joueur1, std::string joueur2)
 {

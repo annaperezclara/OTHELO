@@ -2,9 +2,12 @@
 //  StrategieStupide.cpp
 //  Othelo
 //
+/*
 extern "C"{
 #include <unistd.h>
 }
+*/
+#include <Windows.h>
 
 #include "StrategieStupide.h"
 void StrategieStupide::coords(int* coords, Plateau* plateau, Joueur* joueur) {
@@ -20,6 +23,7 @@ void StrategieStupide::coords(int* coords, Plateau* plateau, Joueur* joueur) {
     }
 
     //sleep(1);
+	Sleep(100.);
     
     coords[0] = x;
     coords[1] = y;

@@ -35,7 +35,7 @@ int main()
             rect.setPosition(50,50);
             
             sf::Font font;
-			string texte= "VICTOIRE\n "+monJeu.joueur_actuel()->nom;
+			string texte= "VICTOIRE\n"+monJeu.vainqueur()->nom;
 			font.loadFromFile("Avenir.ttc");
             sf::Text text(texte.c_str(), font);
            

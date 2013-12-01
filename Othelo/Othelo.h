@@ -41,6 +41,7 @@ class Jeu
 		void phase_jeu (sf::RenderWindow *fenetre);
 		void quitter ();
 		Joueur* joueur_actuel();
+		Joueur* vainqueur();
 		Plateau* plateau;
         sf::RenderWindow* fenetre;
         bool termine;

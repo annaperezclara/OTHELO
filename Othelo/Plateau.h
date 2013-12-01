@@ -20,6 +20,7 @@ public:
     void ajouter_pion ( Joueur* joueur, int x, int y);
     bool fin_de_jeu ( Joueur* joueur );
 	void calcul_score();
+	bool calcul_vainqueur();
     
 private:
     int liste_cases [64];

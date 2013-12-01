@@ -12,15 +12,19 @@ Jeu::Jeu(sf::RenderWindow* fenetre)
 	int jeu = NULL;
 	string nom;
 
+	
 	while ( !(jeu==1 || jeu==2 || jeu == 3))
 	{
-		cout<<"Bonjour, bienvenue dans le jeu d'othelo"<<endl;
-		cout<<"Tapez 1 pour jouer contre l'ordi"<<endl;
-		cout<<"Tapez 2 pour joeur avec un ami"<<endl;
+		cout<<"bonjour, bienvenue dans le jeu d'othelo"<<endl;
+		cout<<"tapez 1 pour jouer contre l'ordi"<<endl;
+		cout<<"tapez 2 pour joeur avec un ami"<<endl;
 
 		cin>>jeu;
+		cin.clear();
+		cin.ignore();
 	}
 
+	
     tour = 0;
     
 	plateau = new Plateau();
@@ -64,6 +68,14 @@ Jeu::~Jeu( )
 Joueur* Jeu::joueur_actuel()
 {
 	if ( tour%2 == 0)
+		return joueur1;
+	else
+		return joueur2;
+}
+
+Joueur* Jeu::vainqueur()
+{
+	if ( plateau->calcul_vainqueur())
 		return joueur1;
 	else
 		return joueur2;
