@@ -25,7 +25,6 @@ int main()
         {
             stop = true;
             //si plus de position possible on quitte et on affiche le vainqueyr
-            // /!\/!\ fonction a rajouter pour dire qui a gagne
             sf::RectangleShape rect(sf::Vector2f(400,400));
             rect.setFillColor(sf::Color(0,0,0,125));
             window.draw(rect);
@@ -35,7 +34,6 @@ int main()
             rect.setPosition(50,50);
             
             sf::Font font;
-            //font.loadFromFile("/Users/julien/workspace/projetc++/OTHELO/Othelo/Avenir.ttc");
             sf::Text text("Victoire", font);
            
             text.setCharacterSize(20);
@@ -50,12 +48,6 @@ int main()
         }
         }
         
-		//cout<<"gros bouffon"<<endl;
-
-		/*
-        window.clear();
-        window.draw(shape);
-        window.display();*/
 	}
     
 
