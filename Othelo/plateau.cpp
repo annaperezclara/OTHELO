@@ -4,7 +4,7 @@
 
 Plateau::Plateau()
 {
-	/*for( int i=0; i<64; i++)
+	for( int i=0; i<64; i++)
 	{
 		liste_cases[i] = -1;
 	}
@@ -12,16 +12,16 @@ Plateau::Plateau()
 	liste_cases[27] = 0;
 	liste_cases[28] = 1;
 	liste_cases[35] = 1;
-	liste_cases[36] = 0;*/
-	for( int i=0; i<64; i++)
-	{
-		liste_cases[i] = 1;
-	}
+	liste_cases[36] = 0;
+	//for( int i=0; i<64; i++)
+	//{
+	//	liste_cases[i] = 1;
+	//}
 
-	liste_cases[27] = -1;
-	liste_cases[28] = 0;
-	liste_cases[35] = -1;
-	liste_cases[36] = -1;
+	//liste_cases[27] = -1;
+	//liste_cases[28] = 0;
+	//liste_cases[35] = -1;
+	//liste_cases[36] = -1;
 
 	int nb_pions_blancs = 2;
 	int nb_pions_noirs = 2;
