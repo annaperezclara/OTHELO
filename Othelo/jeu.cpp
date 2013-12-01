@@ -41,7 +41,6 @@ Jeu::Jeu(sf::RenderWindow* fenetre)
         cout<<"Nom du joueur 1"<<endl;
         cin>>nom;
         joueur1 = new Humain(this, nom, 1);
-        
         joueur2 = new IA(this, new StrategieStupide(), plateau, 0);
 	}
     
@@ -79,7 +78,8 @@ void Jeu::phase_jeu (sf::RenderWindow *fenetre2)
         return;
     }
     
-	plateau->afficher(fenetre);
+	plateau->calcul_score();
+	plateau->afficher(fenetre, joueur1->nom, joueur2->nom);
 
 	//on initialise avec une position impossible
     int coords[2] = {-1,-1};
@@ -93,25 +93,7 @@ void Jeu::phase_jeu (sf::RenderWindow *fenetre2)
 	tour++;
 }
 
-/*
-void Jeu::phase_jeu ()
-{
-	Joueur* joueur = joueur_actuel();
-    
-	plateau->afficher();
 
-	//on initialise avec une position impossible
-    int coords[2] = {-1,-1};
-
-	//on demande au joueur des coordonnees jusqu'a ce qu'il fournisse une position possible
-	while( !plateau->action_possible(joueur, coords[0], coords[1]))
-        joueur->jouer(coords);
-
-	//on effectue l'action et on passe au tour suivant
-	plateau->ajouter_pion(joueur, coords[0], coords[1]);
-	tour++;
-}
-*/
 
 
 void Jeu::quitter ()

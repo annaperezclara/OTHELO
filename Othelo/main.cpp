@@ -4,8 +4,8 @@
 
 int main()
 {
-	
-	sf::RenderWindow window(sf::VideoMode(400, 400), "Jeu d'othelo");
+	//fenetre non resizable sinon bug d'affichage
+	sf::RenderWindow window(sf::VideoMode(400, 430), "Jeu d'othelo", sf::Style::Titlebar);
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
@@ -21,10 +21,6 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
         if(monJeu.termine && !stop)
         {
             stop = true;
@@ -52,6 +48,7 @@ int main()
             window.display();
             
         }
+        }
         
 		//cout<<"gros bouffon"<<endl;
 
@@ -61,18 +58,6 @@ int main()
         window.display();*/
 	}
     
-
-	
-	/*
-	//boucle de jeu
-	while(!monJeu.plateau->fin_de_jeu( monJeu.joueur_actuel()))
-		monJeu.phase_jeu();
-
-	monJeu.quitter();
-
-	delete &monJeu;
-	*/
-	
 
 	
     return 0;

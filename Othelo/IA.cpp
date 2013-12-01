@@ -9,6 +9,7 @@ IA::IA(Jeu* jeu, Strategie* strategie, Plateau* plateau, int couleur) {
     this->jeu = jeu;
     this->strategie = strategie;
     this->plateau = plateau;
+    this->nom = "Ordinateur";
 }
 
 void IA::jouer(int* coords) {

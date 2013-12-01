@@ -19,8 +19,24 @@ Plateau::Plateau()
 
 }
 
-void Plateau::afficher(sf::RenderWindow *fenetre)
+void Plateau::calcul_score()
 {
+    nb_pions_blancs=0;
+    nb_pions_noirs=0;
+
+	for(int i=0; i<64; i++)
+	{
+		if( liste_cases[i] == 1)
+			nb_pions_blancs++;
+		if( liste_cases[i] == 0)
+			nb_pions_noirs++;
+	}
+}
+
+void Plateau::afficher(sf::RenderWindow *fenetre, std::string joueur1, std::string joueur2)
+{
+
+	
 	cout<<" ";
 
 	for( int i =0; i<8; i++)
@@ -48,14 +64,15 @@ void Plateau::afficher(sf::RenderWindow *fenetre)
     float radius = 20.0f;
     float padding = 5.0f;
     float width = 8*2*(radius+padding);
-	
-    fenetre->setSize(sf::Vector2u(width, width));
+	float score = 30.;
+
+    fenetre->setSize(sf::Vector2u(width, width+score));
     fenetre->clear(sf::Color(12, 138, 89));
     
     sf::RectangleShape line(sf::Vector2f(width, 2));
     line.setFillColor(sf::Color::Black);
     
-    for (int i = 1; i < 8; i++) {
+    for (int i = 1; i <= 8; i++) {
         line.setPosition(0, 2*(radius+padding)*i);
         fenetre->draw(line);
     }
@@ -71,7 +88,7 @@ void Plateau::afficher(sf::RenderWindow *fenetre)
 
 	for( int i =0; i<8; i++)
 	{ 
-		cout<<i+1<<"|";
+		//cout<<i+1<<"|";
 		for( int j=0; j<8; j++)
 		{
 			if ( liste_cases[i*8+j]== 0)
@@ -87,6 +104,30 @@ void Plateau::afficher(sf::RenderWindow *fenetre)
 		cout<<endl;
 	}
 
+	// Affichage de scores
+	sf::Font font;
+	//font.loadFromFile("arial.ttf");
+    font.loadFromFile("/Users/julien/workspace/projetc++/OTHELO/Othelo/Avenir.ttc");
+
+	//creation objet texte 1
+	joueur1 += " "+std::to_string((long long)nb_pions_blancs);
+	sf::Text text(joueur1.c_str(), font);
+	text.setCharacterSize(20);
+	text.setColor(sf::Color::White);
+	text.setPosition(padding,width+padding);
+
+	// Affichage 1
+	fenetre->draw(text);
+
+	//creation objet texte 2
+	joueur2 += " "+std::to_string((long long)nb_pions_noirs);
+	sf::Text text2(joueur2.c_str(), font);
+	text2.setCharacterSize(20);
+	text2.setColor(sf::Color::Black);
+	text2.setPosition(width/2.,width+padding);
+
+	// Affichage 2
+	fenetre->draw(text2);
 
     fenetre->display();
 

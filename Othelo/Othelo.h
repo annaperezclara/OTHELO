@@ -17,6 +17,7 @@ class Joueur
 		virtual void jouer (int *coords) = 0;
 		int couleur;
         Jeu* jeu;
+        string nom;
 };
 
 class Humain: public Joueur
@@ -24,8 +25,6 @@ class Humain: public Joueur
 	public:
 		Humain(Jeu* jeu, string nom, int couleur);
 		void jouer (int *coords);
-	private:
-		string nom;
 };
 
 class Strategie
@@ -49,6 +48,7 @@ class Jeu
 	private:
 		Joueur* joueur1;
 		Joueur* joueur2;
+
 		int tour;
 };
 
