@@ -12,7 +12,7 @@ Jeu::Jeu(sf::RenderWindow* fenetre)
 	int jeu = NULL;
 	string nom;
 
-	while ( !(jeu==1 || jeu==2))
+	while ( !(jeu==1 || jeu==2 || jeu == 3))
 	{
 		cout<<"Bonjour, bienvenue dans le jeu d'othelo"<<endl;
 		cout<<"Tapez 1 pour jouer contre l'ordi"<<endl;
@@ -42,8 +42,14 @@ Jeu::Jeu(sf::RenderWindow* fenetre)
         cin>>nom;
         joueur1 = new Humain(this, nom, 1);
         
-        joueur2 = new IA(this, new StrategieStupide(), plateau);
+        joueur2 = new IA(this, new StrategieStupide(), plateau, 0);
 	}
+    
+    else if(jeu == 3) {
+        cout<<"IA contre IA"<<endl;
+        joueur1 = new IA(this, new StrategieStupide(), plateau, 0);
+        joueur2 = new IA(this, new StrategieStupide(), plateau, 1);
+    }
 
 
 }
@@ -67,6 +73,11 @@ Joueur* Jeu::joueur_actuel()
 void Jeu::phase_jeu (sf::RenderWindow *fenetre2)
 {
 	Joueur* joueur = joueur_actuel();
+    
+    if(plateau->fin_de_jeu(joueur)) {
+        termine = true;
+        return;
+    }
     
 	plateau->afficher(fenetre);
 

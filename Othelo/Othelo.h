@@ -26,7 +26,6 @@ class Humain: public Joueur
 		void jouer (int *coords);
 	private:
 		string nom;
-
 };
 
 class Strategie
@@ -45,6 +44,7 @@ class Jeu
 		Joueur* joueur_actuel();
 		Plateau* plateau;
         sf::RenderWindow* fenetre;
+        bool termine = false;
 
 	private:
 		Joueur* joueur1;

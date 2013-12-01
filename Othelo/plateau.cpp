@@ -141,21 +141,16 @@ bool Plateau::fin_de_jeu ( Joueur* joueur )
 {
 
     //on parcourt toutes les cases pour verifier qu'une action est possible
-	bool fin = true;
-
 	for( int i=0; i<8; i++)
 	{
 		for( int j=0; j<8; j++)
 		{
-			if( liste_cases[i*8+j] == -1 )
-			{
-				if (action_possible ( joueur, i, j ))
-					fin = false;
-			}
+            if (action_possible (joueur, i, j))
+                return false;
 		}
 	}
 
-	return fin;
+	return true;
 
 }
 
