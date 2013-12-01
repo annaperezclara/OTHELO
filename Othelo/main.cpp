@@ -10,8 +10,7 @@ int main()
     shape.setFillColor(sf::Color::Green);
 
     Jeu monJeu(&window);
-    
-    bool stop = false;
+	cout<<monJeu.termine<<endl;
     
 	//boucle de jeu tant que la fenêtre reste ouverte
     while (window.isOpen())
@@ -21,10 +20,12 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
-        if(monJeu.termine && !stop)
+        if(monJeu.termine)
         {
-            stop = true;
-            //si plus de position possible on quitte et on affiche le vainqueyr
+
+			cout<<"APPUYEZ SUR LA TOUCHE ENTREE POUR QUITTEZ"<<endl;
+
+            //si plus de position possible on quitte et on affiche le vainqueur
             sf::RectangleShape rect(sf::Vector2f(400,400));
             rect.setFillColor(sf::Color(0,0,0,125));
             window.draw(rect);
@@ -34,16 +35,29 @@ int main()
             rect.setPosition(50,50);
             
             sf::Font font;
-            sf::Text text("Victoire", font);
+			string texte= "VICTOIRE\n "+monJeu.joueur_actuel()->nom;
+			font.loadFromFile("Avenir.ttc");
+            sf::Text text(texte.c_str(), font);
            
-            text.setCharacterSize(20);
-            text.setColor(sf::Color::Black);
+            text.setCharacterSize(40);
+            text.setColor(sf::Color::Red);
+			text.setPosition(120,150);
             
             window.draw(rect);
             window.draw(text);
             
             
             window.display();
+
+			while(!sf::Keyboard::isKeyPressed((sf::Keyboard::Return)))
+			{
+				if(sf::Keyboard::isKeyPressed((sf::Keyboard::Return)))
+				{
+					window.close();
+					return 1;
+				}
+			}
+
             
         }
         }
