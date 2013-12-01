@@ -107,7 +107,7 @@ void Plateau::afficher(sf::RenderWindow *fenetre, std::string joueur1, std::stri
 	// Affichage de scores
 	sf::Font font;
 	//font.loadFromFile("arial.ttf");
-    font.loadFromFile("/Users/julien/workspace/projetc++/OTHELO/Othelo/Avenir.ttc");
+    font.loadFromFile("Avenir.ttc");
 
 	//creation objet texte 1
 	joueur1 += " "+std::to_string((long long)nb_pions_blancs);
