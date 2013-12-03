@@ -26,6 +26,7 @@ int main()
 			cout<<"APPUYEZ SUR LA TOUCHE ENTREE POUR QUITTEZ"<<endl;
 
             //si plus de position possible on quitte et on affiche le vainqueur
+			//fond
             sf::RectangleShape rect(sf::Vector2f(400,400));
             rect.setFillColor(sf::Color(0,0,0,125));
             window.draw(rect);
@@ -34,15 +35,17 @@ int main()
             rect.setFillColor(sf::Color(255,255,255,230));
             rect.setPosition(50,50);
             
+			//message
             sf::Font font;
 			string texte= "VICTOIRE\n"+monJeu.vainqueur()->nom;
 			font.loadFromFile("Avenir.ttc");
             sf::Text text(texte.c_str(), font);
            
             text.setCharacterSize(40);
-            text.setColor(sf::Color::Red);
+            text.setColor(sf::Color::Black);
 			text.setPosition(120,150);
-            
+
+
             window.draw(rect);
             window.draw(text);
             
