@@ -6,8 +6,6 @@ int main()
 {
 	//fenetre non resizable sinon bug d'affichage
 	sf::RenderWindow window(sf::VideoMode(400, 430), "Jeu d'othelo", sf::Style::Titlebar);
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
 
     Jeu monJeu(&window);
 	cout<<monJeu.termine<<endl;
