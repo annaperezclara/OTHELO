@@ -1,9 +1,12 @@
 #include "Othelo.h"
 #include <SFML/Audio.hpp>
-#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 int main()
 {
+
+
+
 	//fenetre non resizable sinon bug d'affichage
 	sf::RenderWindow window(sf::VideoMode(400, 430), "Jeu d'othelo", sf::Style::Titlebar);
 
